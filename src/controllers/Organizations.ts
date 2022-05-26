@@ -10,7 +10,10 @@ query get_organizations {
 `
 
 export const useOrganizations = () => {
-  const [{ data, fetching }] = useQuery({ query: GET_ORGANIZATIONS })
+  const [{ data, fetching }] = useQuery({
+    query: GET_ORGANIZATIONS,
+    pause: loading,
+  });
   return {
     organizations: data?.organizations,
     loading: fetching,

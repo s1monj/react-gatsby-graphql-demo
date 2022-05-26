@@ -4,7 +4,7 @@ import { useOrganizations } from "../../controllers/Organizations";
 import { OrganizationItemType } from "../../types";
 
 const OrganizationList = () => {
-  const { organizations, loading } = useOrganizations();
+  const { organizations, loading } = useOrganizations(loading);
   return (
     <div className="table-responsive">
       <table className="table table-striped table-sm">

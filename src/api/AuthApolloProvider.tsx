@@ -20,6 +20,7 @@ const AuthApolloProvider = ({ children }) => {
     useAuth0();
   const [token, setToken] = useState("");
   const [client, setClient] = useState(setupClient(token));
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     (async () => {
       if (isAuthenticated) {
@@ -36,6 +37,7 @@ const AuthApolloProvider = ({ children }) => {
   }, [isAuthenticated, getAccessTokenSilently]);
   useEffect(() => {
     setClient(setupClient(token));
+    if (client) setLoading(false);
   }, [token]);
   return <Provider value={client}>{children}</Provider>;
 };
